@@ -6,6 +6,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 const Style9Plugin = require("style9/webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const config: Configuration = {
   mode: "development",
@@ -71,6 +72,7 @@ const config: Configuration = {
     }),
     new Style9Plugin(),
     new MiniCssExtractPlugin(),
+    new Dotenv(),
   ],
   devtool: "inline-source-map",
   devServer: {
