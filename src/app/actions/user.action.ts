@@ -45,7 +45,10 @@ export const signUp =
   };
 
 export const signIn =
-  (payload: { studentId: string; password: string }): VIUThunk =>
+  (
+    payload: { student_id: string; password: string },
+    history: History
+  ): VIUThunk =>
   async dispatch => {
     try {
       const { data } = await httpRequest.post("/api/auth/signin", payload, {
@@ -61,9 +64,19 @@ export const signIn =
         },
       });
 
+      dispatch({
+        type: ToastActionTypes.TOAST_SUCCESS,
+        payload: { success: data.message },
+      });
+
       localStorage.setItem("accessToken", data.token);
+
+      history.push("/home");
     } catch (error) {
-      console.log("asdfasdf");
+      dispatch({
+        type: ToastActionTypes.TOAST_FAILURE,
+        payload: { error: errorHandler(error) },
+      });
     }
   };
 
