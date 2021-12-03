@@ -3,6 +3,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles/app.css";
 
+// components
+import Loader from "./components/Loader";
+import Toast from "./components/Toast";
+
 // routes
 import Routes from "./routes";
 
@@ -12,6 +16,7 @@ import { VIUState } from "./types/viu.type";
 
 const App = () => {
   const { isLoading } = useSelector(appSelector);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +27,8 @@ const App = () => {
     <Router>
       <>
         <Routes />
-        {isLoading && <div>Loading.....</div>}
+        {isLoading && <Loader />}
+        <Toast />
       </>
     </Router>
   );
