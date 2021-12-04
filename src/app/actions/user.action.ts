@@ -98,7 +98,10 @@ export const signOut =
       localStorage.removeItem("accessToken");
       history.push("/signin");
     } catch (error) {
-      console.log("asdfasdf");
+      dispatch({
+        type: ToastActionTypes.TOAST_FAILURE,
+        payload: { error: errorHandler(error) },
+      });
     }
   };
 

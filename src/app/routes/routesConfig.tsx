@@ -20,6 +20,12 @@ const Error404 = lazy(() => import("@/app/modules/Error404"));
 const SignUp = lazy(() => import("@/app/modules/SignUp"));
 const SignIn = lazy(() => import("@/app/modules/SignIn"));
 const Home = lazy(() => import("@/app/modules/Home"));
+const Explore = lazy(() => import("@/app/modules/Explore"));
+const Groups = lazy(() => import("@/app/modules/Groups"));
+const Jobs = lazy(() => import("@/app/modules/Jobs"));
+const Bookmarks = lazy(() => import("@/app/modules/Bookmarks"));
+const Profile = lazy(() => import("@/app/modules/Profile"));
+const Settings = lazy(() => import("@/app/modules/Settings"));
 const Test = lazy(() => import("@/app/modules/Test"));
 
 export const routesConfig: RouteShape[] = [
@@ -59,6 +65,42 @@ export const routesConfig: RouteShape[] = [
         exact: true,
         path: "/home",
         component: Home,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/explore",
+        component: Explore,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/groups",
+        component: Groups,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/jobs",
+        component: Jobs,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/bookmarks",
+        component: Bookmarks,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/profile",
+        component: Profile,
+        requireRoles: [USER_ROLE.USER],
+      },
+      {
+        exact: true,
+        path: "/settings",
+        component: Settings,
         requireRoles: [USER_ROLE.USER],
       },
       {
